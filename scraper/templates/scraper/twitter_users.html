@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% load bootstrap3 %}
+{% bootstrap_css %}
+
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+{% endblock %}
+
+{% block page_title %}
+{% endblock %}
+
+{% block content %}
+<div class="panel panel-default">
+    <div class="panel-heading">Users</div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            {% for user in users %}
+                <ul>
+                    <li>id: <a href="{% url "get_twit_for_user" user.id %}">{{ user.id }}</a></li>
+                    <li>url: {{ user.url }}</li>
+                    <li>status: {{ user.status_user }}</li>
+                    <li>last update: {{ user.date_update }}</li>
+                    <ul>
+                        <li><a href="{% url "delete_user_twitter" user.id %}">DELETE</a></li>
+                        <li><a href="{% url "update_user_twitter" user.id %}">UPDATE</a></li>
+                    </ul>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
