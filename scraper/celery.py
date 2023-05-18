@@ -5,7 +5,7 @@ from celery import Celery
 # Set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'twitter_import.settings')
 
-app = Celery('nau_orders_automation',
+app = Celery('twitter',
              broker='pyamqp://guest@localhost//')
 
 # Using a string here means the worker doesn't have to serialize
